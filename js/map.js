@@ -94,7 +94,7 @@
         marker.setMap(aMap);
 
         // 绑定 click 事件
-        AMap.event.addListener(marker, 'click', this.onMarkerClick.bind(this));
+        marker.on('click', this.onMarkerClick.bind(this));
 
         return marker;
     }
@@ -104,7 +104,8 @@
     	var index = obj.target.getExtData();
     	this.fastMarkChange(index);
     	viewModel.selectedPoiIndex(index);
-    	aMap.setCenter(obj.lnglat)
+    	aMap.setCenter(obj.lnglat);
+    	return false;
     }
 
     Map.prototype.createIcon = function(url) {
