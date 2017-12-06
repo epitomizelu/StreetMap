@@ -94,7 +94,11 @@
         marker.setMap(aMap);
 
         // 绑定 click 事件
-        marker.on('click', this.onMarkerClick.bind(this));
+        marker.off('click');
+
+        // 为什么启用chrome隐身模式的情况下，第一次打开网页，当点击marker时，执行的不是
+        // 我注册的click事件，执行的貌似是marker默认的click事件
+        AMap.event.addListener(marker,'click', this.onMarkerClick.bind(this));
 
         return marker;
     }
@@ -105,6 +109,8 @@
     	this.fastMarkChange(index);
     	viewModel.selectedPoiIndex(index);
     	aMap.setCenter(obj.lnglat);
+
+    	foreCast.getForeCastInfo(obj.lnglat);
     	return false;
     }
 
@@ -137,10 +143,18 @@
         toolBar.doLocation();
     } 
 
-     // 重设地图中心 
+    // 重设地图中心 
     Map.prototype.resetMapCenter = function(obj) { 
     	aMap.setCenter(obj)
-    }      
+    }   
 
+    // 创建infowindow
+    Map.prototype.createAndShowInfoWindow = function(content,location) {
+    	var infoWindow = new AMap.InfoWindow({
+             content: content  //使用默认信息窗体框样式，显示信息内容
+        });
+        infoWindow.open(aMap, location);
+    }
+    
     window.mapControl = new Map();
 })();

@@ -65,6 +65,10 @@
     		mapControl.clearAllMarkers();
     		mapControl.createMarkers(this.filterPoisList()); 
     	}
+
+    	this.asidePoiListClass = ko.pureComputed(function() {
+        	return  this.showOrHidePoiList() === 'block' ? 'show' : 'hidden';
+    	}, this);
     }
 
 

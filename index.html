@@ -14,7 +14,7 @@
 
 <body>
     <div class="wrap">
-        <aside class="menu" >
+        <aside class="menu" data-bind="css: asidePoiListClass">
             <h3 class="title">POI Locations</h3>
             <div class="search-area">
                 <input type="text" data-bind = "value: current, valueUpdate: 'afterkeydown', enterKey: filterPois">
@@ -38,6 +38,8 @@
             <div id="panel"></div>
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="./js/forecast.js"></script>
     <script type="text/javascript" src="./js/map.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
 </body>

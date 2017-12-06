@@ -31,6 +31,7 @@ html,body,.wrap {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	min-width: 200px;
 }
 
 main {
@@ -42,13 +43,14 @@ main {
 .header {
 	height: 3rem;
 	background: #212121;
+	text-align: right;
 }
 
 .header img {
 	margin-top: 0.75rem;
 	width: 1.5rem;
 	height: 1.5rem;
-	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .search-area {
@@ -117,6 +119,14 @@ main {
     width: 100%;
     flex: 1;
     min-height: 400px;
+}
+
+.show {
+	display: block;
+}
+
+.hidden {
+	display: none;
 }
 
 
